@@ -4,6 +4,15 @@
 
 * Paper: "[An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale](https://arxiv.org/abs/2010.11929)"
 * Authors: Alexey Dosovitskiy, Lucas Beyer, Alexander Kolesnikov, Dirk Weissenborn, Xiaohua Zhai, Thomas Unterthiner, Mostafa Dehghani, Matthias Minderer, Georg Heigold, Sylvain Gelly, Jakob Uszkoreit, Neil Houlsby
+
+作者使用完全摒弃CNN卷积提取特征的方式，采用纯Transformer直接sequences of image patches来执行进行图片分类任务。
+1. 将图片切割成 sequence of linear embeddings 的补丁patches
+2. **Image patches are treated the same way as tokens (words)** in an NLP application. We train the model on image classification in supervised fashion.
+3. Transformers lack some of **the inductive biases inherent** to CNNs, such as **translation equivariance and locality**, and therefore do not **generalize** well
+when trained on insufficient amounts of data.
+4. The classification head is implemented by **a MLP with one hidden layer** at pre-training time and by <u>a single **linear layer** at fine-tuning time</u>.
+5. 
+
 ## 2019
 ### EfficientNet
 
