@@ -6,13 +6,19 @@
 * Authors: Alexey Dosovitskiy, Lucas Beyer, Alexander Kolesnikov, Dirk Weissenborn, Xiaohua Zhai, Thomas Unterthiner, Mostafa Dehghani, Matthias Minderer, Georg Heigold, Sylvain Gelly, Jakob Uszkoreit, Neil Houlsby
 
 作者使用完全摒弃CNN卷积提取特征的方式，采用纯Transformer直接sequences of image patches来执行进行图片分类任务。
-1. 将图片切割成 sequence of linear embeddings 的补丁patches
+1. 将图片切割成 sequence of linear embeddings 的补丁patches，平坦线性展开
 2. **Image patches are treated the same way as tokens (words)** in an NLP application. We train the model on image classification in supervised fashion.
 3. Transformers lack some of **the inductive biases inherent** to CNNs, such as **translation equivariance and locality**, and therefore do not **generalize** well
 when trained on insufficient amounts of data.
 4. The classification head is implemented by **a MLP with one hidden layer** at pre-training time and by <u>a single **linear layer** at fine-tuning time</u>.
-5. 
-
+5. MLP: Typically consists of two fully connected layers with a GELU (Gaussian Error Linear Unit) **non-linearity** in between.
+![](picture/MLP.jpg)
+6. Self-attention allows ViT to <u>**integrate information** across the entire image</u> even in the lowest layers. We investigate to <u>what degree the network makes use of this capability</u>. 
+Specifically, we compute the average distance in image space across which information is integrated, based on the attention weights. This “**attention distance**” is analogous to receptive field size in CNNs.
+Further, the attention distance increases with network depth. Globally, we find that the model attends to image regions that are semantically relevant for classification. 他想表达的是利用vision transformer进行分类会抓住属于图像中相关的“图像语义”，类似text中的文字语义。
+7. Transformers show impressive performance on NLP tasks. However, much of their success stems not only from their **excellent scalability** but also from large scale **self-supervised** pre-training.
+8. Using multi-band dimension to explore the distribution law of vision attention distance with the number of multi-head may be a new way of visual perception environment in the future.
+![](picture/conclusion_fultureExplore.jpg)
 ## 2019
 ### EfficientNet
 
