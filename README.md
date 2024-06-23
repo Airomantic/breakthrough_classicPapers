@@ -17,7 +17,7 @@ when trained on insufficient amounts of data.
 Specifically, we compute the average distance in image space across which information is integrated, based on the attention weights. This “**attention distance**” is analogous to receptive field size in CNNs.
 Further, the attention distance increases with network depth. Globally, we find that the model attends to image regions that are semantically relevant for classification. 他想表达的是利用vision transformer进行分类会抓住属于图像中相关的“图像语义”，类似text中的文字语义。
 7. Transformers show impressive performance on NLP tasks. However, much of their success stems not only from their **excellent scalability** but also from large scale **self-supervised** pre-training.
-8. Using multi-band dimension to explore the distribution law of vision attention distance with the number of multi-head may be a new way of visual perception environment in the future.
+8. Using multi-band dimension to explore the distribution law of vision attention distance with the number of multi-head may be a new way of visual perception environment in the future. 来自我的新想法
 ![](picture/conclusion_fultureExplore.jpg)
 ## 2019
 ### EfficientNet
